@@ -1,8 +1,11 @@
 pipeline {
     agent any
-    tools {
-        jdk 'Java17'
+    
+    environment {
+        JAVA_HOME = 'C:\\Users\\User\\AppData\\Local\\Programs\\Eclipse Adoptium\\jdk-17.0.18.8-hotspot'
+        PATH = "$JAVA_HOME\\bin;%PATH%"
     }
+    
     stages {
         stage('Checkout') {
             steps {
