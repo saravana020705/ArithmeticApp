@@ -12,14 +12,14 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'Compiling Java code...'
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
         
         stage('Test') {
             steps {
                 echo 'Running JUnit tests...'
-                sh 'mvn test'
+                bat 'mvn test'
             }
             post {
                 always {
@@ -31,21 +31,21 @@ pipeline {
         stage('Package') {
             steps {
                 echo 'Packaging JAR...'
-                sh 'mvn package'
+                bat 'mvn package'
             }
         }
         
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                sh 'docker build -t arithmetic-app:latest .'
+                bat 'docker build -t arithmetic-app:latest .'
             }
         }
         
         stage('Run Docker Container') {
             steps {
                 echo 'Running Docker container...'
-                sh 'docker run --rm arithmetic-app:latest'
+                bat 'docker run --rm arithmetic-app:latest'
             }
         }
     }
